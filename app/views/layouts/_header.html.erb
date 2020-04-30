@@ -1,0 +1,15 @@
+<header class='navbar-fixed'>
+<nav class='#1a237e indigo darken-4'>
+    <div class="container nav-wrapper">
+    <%= link_to  'Market', root_path, class:'brand-logo'%>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <%= link_to 'about', about_path%>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+<%= link_to 'about', about_path%>
+  </ul>  
+  </header>
