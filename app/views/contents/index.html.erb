@@ -1,37 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Contenuti</h1>
+<!-- <h1>Contenuti</h1> -->
+<div class="row">
+ <% @contents.each do |content| %>
+  <div class="col s3">
+    <div class="card ">
+    <div class="card-image waves-effect waves-block waves-light">
+     <%= image_tag content.cover.url, class: 'activator' %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= content.titolo %><i class="material-icons right">more_vert</i></span>
+        <div>
+        <span>Venduto da: 
+        <%= content.user.name %>
+        </span>
+        <span class='right'>
+         <td><%= number_to_currency(content.price) %></td>
+        </span>
+        </div>
+        <br>
+        <div class='center'><%= link_to 'Scopri di più', content_path(content), class: 'btn' %>
+          </div>
+          <div class='center'>
+          <%if content.user == current_user%>
+            <%= link_to 'modifica', edit_content_path(content) %>
+            <br>
+            <%= link_to 'elimina', content, method: :delete, data: { confirm: 'Sei sicuro ?' } %>
+         <%end%>
+         </div>
 
-<table>
-  <thead>
-    <tr>
-    <th>Immagine</th>
-      <th>Titolo</th>
-      <th>Descrizione</th>
-      <th>Utente</th>
-      <th>Prezzo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @contents.each do |content| %>
-      <tr>
-        <td><%= image_tag content.cover.url(:thumb) %></td>
-        <td><%= content.titolo %></td>
-        <td><%= content.descrizione %></td>
-        <td><%= content.user.name %></td>
-        <td><%= content.price %></td>
-        <td><%= link_to 'mostra', content_path(content) %></td>
-        <%if content.user == current_user%>
-            <td><%= link_to 'modifica', edit_content_path(content) %></td>
-            <td><%= link_to 'elimina', content, method: :delete, data: { confirm: 'Sei sicuro ?' } %></td>
-        <%end%>
-      </tr>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= content.titolo %><i class="material-icons right">close</i></span>
+        <p><%= content.descrizione %></p>
+      </div>
+    </div>
+  </div>
     <% end %>
-  </tbody>
-</table>
+</div>          
 
-<br>
 
-<%= link_to 'Nuovo contenuto', new_content_path %>
+
+
+
+
+
