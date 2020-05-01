@@ -5,4 +5,7 @@ class Content < ApplicationRecord
     validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/,
     messagge:'Solo le immagini sono supportate'
 
-end
+    validates :titolo, :descrizione, :price, presence: true
+    validates :price, numericality: { greater_than: 0 }
+    validates :cover, attachment_presence: true
+    end
