@@ -6,7 +6,9 @@ ruby '2.7.0'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.11'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'will_paginate', '~> 3.1.0'
+gem 'friendly_id', '~> 5.2.4'
 gem "paperclip", "~> 6.0.0"
 gem 'will_paginate-materialize'
 gem 'sass-rails', '~> 5.0'
